@@ -56,7 +56,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
       const origin = event.origin;
       const allowedOrigins = [
   'https://securesociety-smart-apartment-service.onrender.com',
-  'http://localhost:5000'
+  'http://localhost:3000'
 ];
 
 if (!allowedOrigins.includes(event.origin)) {
