@@ -75,9 +75,6 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
     setGoogleLoading(true);
     setErrorMsg('');
     setSuccessMsg('');
-     console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
-  console.log("API_URL =", API_URL);
-
     try {
       const queryParams = new URLSearchParams({
         role: viewState === 'register' ? role : 'resident',
@@ -89,15 +86,15 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
         name: viewState === 'register' ? name : '',
       });
 
-
-const response = await fetch(
+      const response = await fetch(
   `${API_URL}/api/auth/google/url?${queryParams.toString()}`
 );
-      if (!response.ok) {
-        throw new Error('Could not retrieve Google Sign-In URL from Gate Server.');
-      }
 
-      const data = await response.json();
+const data = await response.json();
+
+if (!response.ok) {
+  throw new Error(data.error || "Failed to start Google authentication");
+}
       const width = 500;
       const height = 650;
       const left = window.screen.width / 2 - width / 2;
