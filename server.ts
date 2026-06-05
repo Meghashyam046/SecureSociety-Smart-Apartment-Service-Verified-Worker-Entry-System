@@ -1,6 +1,6 @@
-import express from 'express';
 import path from 'path';
 import fs from 'fs';
+import cors from 'cors';
 import crypto from 'crypto';
 import QRCode from 'qrcode';
 import { GoogleGenAI } from '@google/genai';
@@ -9,6 +9,15 @@ import { createServer as createViteServer } from 'vite';
 const app = express();
 const PORT = 3000;
 const DB_FILE = path.join(process.cwd(), 'db.json');
+
+app.use(cors({
+  origin: [
+    "https://smartapartmentservices.vercel.app",
+    "http://localhost:3000"
+  ],
+  credentials: true
+}));
+
 
 app.use(express.json());
 
