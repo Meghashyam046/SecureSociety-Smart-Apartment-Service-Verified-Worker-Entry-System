@@ -96,7 +96,7 @@ export default function App() {
                   <span>Interactive Dashboard</span>
                 </button>
                 <div className="text-[10px] text-slate-450 p-2.5 leading-normal bg-slate-800/40 rounded-xl mt-4 font-medium border border-slate-800">
-                  <span className="text-white font-bold block mb-0.5">Quick Hint</span> Create tickets on the panel, and let AI provide preventive checks.
+                  <span className="text-white font-bold block mb-0.5">Quick Hint</span> Create tickets on the panel, provide preventive checks.
                 </div>
               </div>
             )}
@@ -190,7 +190,7 @@ export default function App() {
             ) : (
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-indigo-650 animate-pulse" />
-                <span className="text-sm font-bold text-slate-855 font-display">SecureSociety Gate Console</span>
+                <span className="text-sm font-bold text-slate-855 font-display">Secure Smart Apartment Management System</span>
               </div>
             )}
           </div>
@@ -232,7 +232,7 @@ export default function App() {
                       </div>
                       <div className="p-2 bg-slate-50 rounded-lg flex gap-2">
                         <span className="w-1.5 h-1.5 bg-indigo-505 rounded-full mt-1 shrink-0"></span>
-                        <p>AI troubleshooting models synced with direct society logs.</p>
+                        <p>Troubleshooting system synced with service logs.</p>
                       </div>
                     </div>
                   </div>
@@ -334,4 +334,3 @@ export default function App() {
     // Session state sync callback inside society ledger
   }
 }
-
