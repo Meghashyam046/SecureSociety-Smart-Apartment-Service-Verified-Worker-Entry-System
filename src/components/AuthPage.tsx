@@ -256,12 +256,14 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
         throw new Error(data.error || 'Failed to verify email address.');
       }
 
-      setSuccessMsg('Verfied! Reset instructions generated.');
-      setSimulatedInbox({
-        token: data.resetToken,
-        link: data.resetLink,
-        email: data.email
-      });
+      setSuccessMsg('Verification successful. Continue to reset your password.');
+
+setSimulatedInbox({
+  token: data.resetToken,
+  link: data.resetLink,
+  email: data.email
+});
+      
     } catch (err: any) {
       setErrorMsg(err.message || 'An error occurred during verification.');
     } finally {
@@ -273,7 +275,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
   const handleResetPasswordSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!resetToken.trim()) {
-      setErrorMsg('Please specify your password reset token.');
+      setErrorMsg('Reset token is required.');
       return;
     }
     if (!newPassword) {
@@ -338,12 +340,12 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
       <div className="text-center space-y-2">
         <div className="inline-flex items-center gap-1.5 text-slate-900 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full text-xs font-bold font-sans">
           <KeyRound className="w-3.5 h-3.5 text-indigo-505 animate-pulse" />
-          SecureSociety Authorized Access
+          Smart Apartment Authorized Access
         </div>
         <h2 className="text-2xl font-black font-sans text-slate-900 tracking-tight">Smart Apartment Services</h2>
         <p className="text-xs text-slate-500 max-w-xs mx-auto leading-normal">
           {viewState === 'login' && 'Log in or reset to manage complaints, technicians, and entry verification.'}
-          {viewState === 'register' && 'Register a new apartment resident or technical worker account.'}
+          {viewState === 'register' && 'Register a new apartment resident user or technical worker or admin account.'}
           {viewState === 'forgot' && 'Submit your email to receive a secure login reset validation token.'}
           {viewState === 'reset' && 'Reset your password to standard SecureSociety credentials.'}
         </p>
@@ -450,7 +452,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
             disabled={loading}
             className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3.5 rounded-xl shadow-lg transition active:scale-95 cursor-pointer disabled:bg-slate-400"
           >
-            <span>Authorized Log In</span>
+            <span>Log In</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
@@ -459,7 +461,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
               <span className="w-full border-t border-slate-200" />
             </div>
             <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest">
-              <span className="bg-white px-3 text-slate-400">Or credentials context</span>
+              <span className="bg-white px-3 text-slate-400">Or Continue with Google</span>
             </div>
           </div>
 
@@ -536,7 +538,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
                     : 'border-slate-150 text-slate-450 hover:bg-slate-50'
                 }`}
               >
-                Society Admin
+                 Admin
               </button>
             </div>
           </div>
@@ -709,7 +711,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
             disabled={loading}
             className="w-full bg-slate-900 hover:bg-slate-850 text-white font-bold text-xs py-3 rounded-xl px-4 shadow shadow-md transition active:scale-95 gap-2 inline-flex items-center justify-center cursor-pointer disabled:bg-slate-400"
           >
-            <span>Register & Initialize Profile</span>
+            <span>Register</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
@@ -718,7 +720,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
               <span className="w-full border-t border-slate-200" />
             </div>
             <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest">
-              <span className="bg-white px-3 text-slate-400">Or credentials context</span>
+              <span className="bg-white px-3 text-slate-400">Or Continue with Google</span>
             </div>
           </div>
 
@@ -791,7 +793,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
             <div className="p-4 bg-indigo-50 border border-indigo-100 rounded-2xl space-y-3 mt-4 animate-fadeIn">
               <div className="flex items-center gap-1.5 text-indigo-850 font-black uppercase text-[10px] tracking-widest border-b border-indigo-100 pb-1.5">
                 <Mail className="w-4 h-4 text-indigo-600 animate-bounce" />
-                Simulated Email Inbox Redirect
+                PASSWORD RESET VERIFICATION
               </div>
               <div className="text-xs text-indigo-950 font-medium leading-relaxed font-sans mt-1">
                 <p>We simulated sending the reset token to <strong className="font-mono text-indigo-700">{simulatedInbox.email}</strong>.</p>
@@ -814,7 +816,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
                     }}
                     className="w-full text-center inline-block py-2 bg-indigo-600 hover:bg-indigo-750 text-white text-[11px] font-extrabold rounded-xl shadow-sm transition active:scale-95 uppercase tracking-wide hover:no-underline"
                   >
-                    Open Password Reset Form &rarr;
+                    Continue to Password Reset
                   </a>
                 </div>
               </div>
@@ -843,7 +845,7 @@ export default function AuthPage({ onLoginSuccess }: AuthPageProps) {
         <form onSubmit={handleResetPasswordSubmit} className="space-y-4 animate-fadeIn">
           <div>
             <label className="block text-[11px] uppercase tracking-wide font-extrabold text-slate-450 mb-1">
-              Reset Security Token
+              CONTINUE TO RESET PASSWORD
             </label>
             <div className="relative">
               <KeyRound className="absolute left-3 top-3.5 w-4 h-4 text-slate-400" />
