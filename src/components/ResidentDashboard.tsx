@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { User, Complaint } from '../types';
-import { 
+import {  
   AlertTriangle, Hammer, Wrench, Sparkles, Send, CheckCircle, 
   Clock, Scan, ArrowRight, Star, HeartHandshake, ShieldAlert, X
 } from 'lucide-react';
@@ -354,8 +354,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                   disabled={aiLoading || !description.trim()}
                   className="inline-flex items-center gap-1 text-[11px] text-indigo-650 hover:text-indigo-850 disabled:text-slate-350 font-extrabold transition-all duration-150 uppercase tracking-wider"
                 >
-                  <Sparkles className={`w-3.5 h-3.5 ${aiLoading ? 'animate-spin' : ''}`} />
-                  AI Troubleshooter
+                  
                 </button>
               </div>
               <textarea
@@ -406,7 +405,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
               className="w-full inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white p-3 rounded-lg text-xs font-bold shadow-md transition-all duration-150 active:scale-98 disabled:bg-slate-300 cursor-pointer uppercase tracking-wider"
             >
               <Send className="w-3.5 h-3.5" />
-              {isSubmitting ? 'Raising Ticket...' : 'File Ticket with Control Room'}
+              {isSubmitting ? 'Raising Ticket...' : 'File Complaint'}
             </button>
           </form>
 
@@ -489,7 +488,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                   {c.status === 'pending' && (
                     <div className="bg-slate-50 px-3.5 py-3 rounded-lg border border-slate-100 text-slate-500 text-xs flex items-center gap-2.5 font-bold">
                       <Clock className="w-4 h-4 text-slate-400 shrink-0" />
-                      Status: Queued. Society supervisors are vetting assignments.
+                      Status: Pending Acceptance. The complaint has been sent to a worker and is awaiting acceptance.
                     </div>
                   )}
 
@@ -507,7 +506,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                             />
                           </div>
                           <div>
-                            <span className="block text-[8px] text-indigo-650 uppercase font-bold tracking-wider">Assigned Contractor</span>
+                            <span className="block text-[8px] text-indigo-650 uppercase font-bold tracking-wider">Accepted by Worke</span>
                             <div className="text-xs font-black text-slate-800 leading-tight">
                               {c.assigned_worker_name || 'Amir Khan'}
                             </div>
@@ -532,7 +531,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                         <div className="bg-indigo-50 border border-indigo-100 text-indigo-805 p-3 rounded-lg space-y-2 animate-fadeIn">
                           <div className="flex items-center gap-1.5 text-xs font-black text-indigo-900 uppercase tracking-wide">
                             <ShieldAlert className="w-4 h-4 text-indigo-600 shrink-0" />
-                            Lock Check Required for Society Safety
+                            Safety Inspection Required
                           </div>
                           <p className="text-[11px] text-slate-600 font-semibold leading-relaxed">
                             Worker is en route. For complete confidence, tap below and verify the digital QR badge displayed on the worker's device when they knock.
@@ -556,7 +555,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                         Technician Active in Unit (QR Access Match Verified)
                       </div>
                       <p className="text-[11px] text-emerald-700 font-semibold">
-                        Supervisor verification stamp logged successfully. Worker is currently fixing issues inside your home.
+                        Worker verification stamp logged successfully. Worker is currently fixing issues inside your home.
                       </p>
                     </div>
                   )}
@@ -660,7 +659,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                   type="submit"
                   className="px-4 py-2 bg-slate-900 border border-transparent hover:bg-slate-800 text-white font-bold rounded-xl shadow transition cursor-pointer"
                 >
-                  Submit Star Verdict
+                  Submit Rating
                 </button>
               </div>
             </form>
@@ -704,7 +703,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                     className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-blue-600 border border-transparent text-white font-bold text-xs rounded-xl shadow hover:bg-blue-700 hover:shadow-md transition active:scale-95 cursor-pointer"
                   >
                     <Sparkles className="w-4 h-4 hover:animate-spin" />
-                    Sandbox Simulator: Auto-Scan QR Details
+                    Sandbox Simulator: Scan QR Details
                   </button>
                 </div>
               )}
@@ -751,7 +750,7 @@ fetch(`${API_URL}/api/complaints/resident`, {
                   <div className="bg-indigo-50 border border-indigo-100 p-3 rounded-xl text-slate-700 text-xs font-medium space-y-1">
                     <div className="text-indigo-900 font-bold">Resident Identity Attestation:</div>
                     <p className="text-[11px] text-indigo-700">
-                      Does the physical repair worker's photograph, uniform, and voice match the security details on your screen?
+                      Does the technician's uniform and identity match the security details displayed on your screen?
                     </p>
                   </div>
 
