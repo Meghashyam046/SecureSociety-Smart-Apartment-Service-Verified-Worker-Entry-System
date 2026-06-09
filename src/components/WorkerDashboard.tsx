@@ -56,30 +56,32 @@ export default function WorkerDashboard({ user }: WorkerDashboardProps) {
 
   // Load complaints and worker metrics profile
 
-const headers = {
-  Authorization: `Bearer ${getToken()}`
-};      
-      const [resComplaints, resProfile] = await Promise.all([
-        fetch(`${API_URL}/api/complaints/worker`, { headers }),
-        fetch(`${API_URL}/api/worker/profile`, { headers })
+const fetchWorkerData = async () => {
+  try {
+    const headers = {
+      Authorization: `Bearer ${getToken()}`
+    };
 
-      ]);
+    const [resComplaints, resProfile] = await Promise.all([
+      fetch(`${API_URL}/api/complaints/worker`, { headers }),
+      fetch(`${API_URL}/api/worker/profile`, { headers })
+    ]);
 
-      if (resComplaints.ok) {
-        const data = await resComplaints.json();
-        setComplaints(data);
-      }
-      
-      if (resProfile.ok) {
-        const metrics = await resProfile.json();
-        setProfileMetrics(metrics);
-      }
-    } catch (err) {
-      console.error('Failed to load technician dashboard datasets', err);
-    } finally {
-      setLoading(false);
+    if (resComplaints.ok) {
+      const complaintsData = await resComplaints.json();
+      setComplaints(complaintsData);
     }
-  };
+
+    if (resProfile.ok) {
+      const profileData = await resProfile.json();
+      setProfileMetrics(profileData);
+    }
+  } catch (err) {
+    console.error('Failed to load technician dashboard datasets', err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     fetchWorkerData();
