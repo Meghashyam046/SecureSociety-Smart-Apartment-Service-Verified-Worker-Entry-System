@@ -13,8 +13,14 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
-const DB_FILE = path.join(process.cwd(), 'db.json');
+
+app.use(cors({
+  origin: [
+    "https://smartapartmentservices.vercel.app",
+    "http://localhost:5173"
+  ],
+  credentials: true
+}));
 
 app.use(express.json());
 
