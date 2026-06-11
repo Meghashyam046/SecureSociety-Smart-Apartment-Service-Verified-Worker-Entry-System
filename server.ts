@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import fs from 'fs';
 import crypto from 'crypto';
 import QRCode from 'qrcode';
