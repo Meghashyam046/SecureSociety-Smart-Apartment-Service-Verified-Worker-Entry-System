@@ -1,7 +1,7 @@
 # 🛡️ SecureSociety
 
 > **Smart Apartment Service & Verified Worker Entry System**  
-> A high-security, full-stack housing society management platform featuring AI-assisted ticket diagnostics, specialized technician assignment, and cryptographic QR-based security verification for on-site services.
+> A high-security, full-stack housing society management platform featuring ticket diagnostics, specialized technician assignment, and cryptographic QR-based security verification for on-site services.
 
 ---
 
