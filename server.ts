@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'path';
-import cors from 'cors';
 import fs from 'fs';
 import crypto from 'crypto';
 import QRCode from 'qrcode';
@@ -13,14 +12,20 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+import cors from "cors";
+
 const app = express();
+const PORT = process.env.PORT || 3000;
+const DB_FILE = path.join(process.cwd(), 'db.json');
 
 app.use(cors({
   origin: [
     "https://smartapartmentservices.vercel.app",
     "http://localhost:3000"
   ],
-  credentials: true
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json());
