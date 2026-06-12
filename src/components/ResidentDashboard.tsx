@@ -10,7 +10,7 @@ interface ResidentDashboardProps {
   user: User;
   onRefreshProfiles: () => void;
 }
-
+export const API_URL = "https://securesociety-smart-apartment-service.onrender.com";
 export default function ResidentDashboard({ user, onRefreshProfiles }: ResidentDashboardProps) {
   const [complaints, setComplaints] = useState<Complaint[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
